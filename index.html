@@ -18,6 +18,18 @@ var today = new Date();
   var day = today.getDay();
   var daylist = ["Sunday","Monday","Tuesday","Wednesday ","Thursday","Friday","Saturday"];
   document.write("Today is : " + daylist[day] + ".");
+  var dd = today.getDate();
+var mm = today.getMonth()+1;
+var yyyy = today.getFullYear();
+if(dd<10)
+{
+	dd='0'+dd;
+}
+if(mm<10)
+{
+	mm='0'+mm;
+}
+document.write("__"+dd+'-'+mm+'-'+yyyy+"__");
   var hour = today.getHours();
   var minute = today.getMinutes();
   var second = today.getSeconds();

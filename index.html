@@ -3,8 +3,14 @@
 <head>
 	<title>Deen</title>
 	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="override.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
- 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.0/css/bulma.min.css">
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.0/css/bulma.min.css">
+  	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+	<style type = "text/css">
+		button {
+			font-family: 'Josefin Sans', sans-serif;
+		</style>
 </head>
 <body>
 Hello World !<br>
@@ -21,7 +27,6 @@ var today = new Date();
   var day = today.getDay();
   var daylist = ["Sunday","Monday","Tuesday","Wednesday ","Thursday","Friday","Saturday"];
   var c = ("Today is : " + daylist[day] + ".");
-  document.getElementById('c').innerHTML = c;
   var dd = today.getDate();
 var mm = today.getMonth()+1;
 var yyyy = today.getFullYear();
@@ -34,7 +39,6 @@ if(mm<10)
 	mm='0'+mm;
 }
 var b = (dd+'-'+mm+'-'+yyyy);
-document.getElementById('b').innerHTML = b;
   var hour = today.getHours();
   var minute = today.getMinutes();
   var second = today.getSeconds();
@@ -68,8 +72,15 @@ document.getElementById('b').innerHTML = b;
   } 
  var a = ("Current Time : "+hour + prepand + " : " + minute + " : " + second);
  document.getElementById('a').innerHTML = a;
+ document.getElementById('b').innerHTML = b;
+ document.getElementById('c').innerHTML = c;
 </script>
 <button onclick="myFunction()">Refresh</button>
+<div class="columns">
+    <div class="column is-full">
+        <a href = "https://www.youtube.com/"><button type="submit" class="button is-primary is-fullwidth">Youtube</button></a>
+    </div>
+</div>
 </div>
 </body>
 </html>

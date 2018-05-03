@@ -35,7 +35,7 @@ var daylist = ["Sunday","Monday","Tuesday","Wednesday ","Thursday","Friday","Sat
 
 var today = new Date();
   var day = today.getDay();
-  var c = (" " + daylist[day]);
+  var c = ("Today is " + daylist[day]);
   var dd = today.getDate();
   var mm = month[today.getMonth()];
 var yyyy = today.getFullYear();
@@ -56,33 +56,37 @@ var b = (dd+'/'+mm+'/'+yyyy);
   else if (hour < 24) {
   	tod = "Evening";
   }
-  var a = (hour + " : " + minute + " : " + second + "  " + tod);
+  var a = (hour + " : " + minute + " : " + second);
 
  document.getElementById('a').innerHTML = a;
  document.getElementById('b').innerHTML = b;
  document.getElementById('c').innerHTML = c;
- var t = setTimeout(startTime, 500)
+ var t = setTimeout(startTime, 1000)
 }
 </script>
 </head>
 <body onload="startTime()">
-	<nav class="navbar is-transparent">
+	<nav class="navbar is-transparent is-dark">
 		<!-- add navbar colour boy -->
     <div class="navbar-brand">
       <div class="navbar-item">
-        <h1 class="title">WebDeen</h1>
+        <h1 class="title" style="color: white; font-family: 'Josefin Sans', sans-serif; height: 10px; ">WebDeen</h1>
       </div>
   	</div>
 	</nav>
-Hello World !<br>
-Ding here. 	<div id = "b"></div> 
-			<div id = "c"></div> 
-			<div id = "a"></div>
+<div class="is-fullwidth is-dark" style="font-size: 50px; font-family: initial; text-align: center; font-style: bold;">I'm Deen</div>
+<br>
+<div id = "a" class="is-fullwidth" style="font-size: 50px; font-family: 'Droid Sans', sans; text-align: center"></div>
+<div id = "c" class="is-fullwidth" style="font-size: 50px; font-family: 'Droid Sans', sans; text-align: center"></div> 
+<div id = "b" class="is-fullwidth" style="font-size: 20px; font-family: 'Droid Sans', sans; text-align: center"></div> 
+
 <div style="height:60px;"></div>
+<!-- Google Search -->
 <form class="is-fullwidth" method="get" action="http://www.google.com/search">
     <span uk-search-icon></span>
     <input autofocus class="uk-search-input" type="text" name = "q" placeholder="Google Search" style="text-align: center; font-size: 30px;">
 </form>
+
 <div style="height:0px;"></div>
 	<button onclick="window.location.href='http://elearn.sunway.edu.my/'" class="button is-dark is-fullwidth">E-learn</button>
     <button onclick="window.location.href='https://izone.sunway.edu.my/'" class="button is-dark is-fullwidth">iZone</button>
@@ -91,7 +95,6 @@ Ding here. 	<div id = "b"></div>
     <button onclick="window.location.href='https://sunwaytechclub.slack.com'" class="button is-dark is-fullwidth">Slack</button>
     <button onclick="window.location.href='http://youtube.com'" class="button is-dark is-fullwidth">YouTube</button>
     <button onclick="window.location.href='http://masterani.me'" class="button is-dark is-fullwidth">Masterani</button>
-
 
     <footer style="text-align: center; background-color: rgb(59, 89, 152)">
     <a href="https://www.facebook.com/ding.nickhong" class="fa fa-facebook" style="color:black"></a>

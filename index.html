@@ -7,8 +7,11 @@
  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.0/css/bulma.min.css">
 </head>
 <body>
-Hello World !
+Hello World !<br>
 Ding here.
+<div id = "a"></div>
+<div id = "b"></div>
+<div id = "c"></div>
 <div>
 <script>
 function myFunction() {
@@ -17,7 +20,8 @@ function myFunction() {
 var today = new Date();
   var day = today.getDay();
   var daylist = ["Sunday","Monday","Tuesday","Wednesday ","Thursday","Friday","Saturday"];
-  document.write("Today is : " + daylist[day] + ".");
+  var c = ("Today is : " + daylist[day] + ".");
+  document.getElementById('c').innerHTML = c;
   var dd = today.getDate();
 var mm = today.getMonth()+1;
 var yyyy = today.getFullYear();
@@ -29,7 +33,8 @@ if(mm<10)
 {
 	mm='0'+mm;
 }
-document.write("__"+dd+'-'+mm+'-'+yyyy+"__");
+var b = (dd+'-'+mm+'-'+yyyy);
+document.getElementById('b').innerHTML = b;
   var hour = today.getHours();
   var minute = today.getMinutes();
   var second = today.getSeconds();
@@ -61,7 +66,8 @@ document.write("__"+dd+'-'+mm+'-'+yyyy+"__");
   prepand=' AM';
   } 
   } 
-document.write("Current Time : "+hour + prepand + " : " + minute + " : " + second);
+ var a = ("Current Time : "+hour + prepand + " : " + minute + " : " + second);
+ document.getElementById('a').innerHTML = a;
 </script>
 <button onclick="myFunction()">Refresh</button>
 </div>

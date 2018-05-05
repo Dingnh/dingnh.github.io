@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DateCalculator</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="override.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.0/css/bulma.min.css">
+
+  	<script>
+  	var date = new Date(); 
+	var dateSet = new Date(date.getYear(), date.getMonth(), date.getDate());
+	var todayDate = new Date(dateSet);
+	function calButton() {
+		var cDate = document.getElementById("CurrentDate").value;
+		var dDate = document.getElementById("DueDate").value;
+	}
+	</script>
+</head>
+<body>
+<nav class="navbar is-transparent is-transparent">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <h1 class="title" style="font-family: 'Josefin Sans', sans-serif; height: 10px; ">WebDeen</h1>
+      </div>
+  	</div>
+  	<div class="navbar-end">
+  		<a class="navbar-item" href="wsappimg.jpg">TimeTable</a>
+	</nav>
+	<div class="section">
+
+    <div class="container">
+      <div class="columns is-centered">
+      <div class="column is-6">
+      <h1 class="title">
+      Calculate Here</h1>
+
+      <div class="box">
+        <div class="field">
+        <label class="label">Current Date</label>
+        <div class="control">
+          <input class="input" placeholder="Current Date">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Due Date</label>
+        <div class="control">
+          <input class="input" placeholder="Due Date">
+        </div>
+      </div>
+
+        <div class="control">
+          <input class="button is-primary is-centered is-fullwidth" type="submit" value="Calculate">
+      </div>
+  </div>
+</html>

@@ -3,9 +3,12 @@
 <head>
 	<title>DateCalculator</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="override.css">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.0/css/bulma.min.css">
+  <link rel="stylesheet" type="text/css" href="override.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.0/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.42/css/uikit.min.css" />
+  
 
   	<script>
   	var date = new Date(); 
@@ -14,6 +17,7 @@
 	function calButton() {
 		var cDate = document.getElementById("CurrentDate").value;
 		var dDate = document.getElementById("DueDate").value;
+//function of DD/MM/YYYY - DD/MM/YYY
 	}
 	</script>
 </head>
@@ -39,19 +43,20 @@
         <div class="field">
         <label class="label">Current Date</label>
         <div class="control">
-          <input class="input" placeholder="Current Date">
+          <input type="date" class="input" placeholder="Current Date">
         </div>
       </div>
 
       <div class="field">
         <label class="label">Due Date</label>
         <div class="control">
-          <input class="input" placeholder="Due Date">
+          <input type="date" class="input" placeholder="Due Date">
         </div>
       </div>
 
-        <div class="control">
-          <input class="button is-primary is-centered is-fullwidth" type="submit" value="Calculate">
-      </div>
+          <button id="calButton" type="button" class="button is-primary is-centered is-fullwidth" onclick="calButton()">Calculate</button>
+          <!-- Answer -->
+          
+  
   </div>
 </html>

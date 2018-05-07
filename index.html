@@ -16,10 +16,46 @@
 			font-family: 'Josefin Sans', sans-serif; 
 		}
 		</style>
+		<script type="text/javascript">
+			function animate_string(id) 
+{
+    var element = document.getElementById(id);
+    var textNode = element.childNodes[0]; 
+    var text = textNode.data;
+
+setInterval(function () 
+{
+ text = text[text.length - 1] + text.substring(0, text.length - 1);
+  textNode.data = text;
+}, 250);
+}
+		</script>
 		<script>
 function startTime() {
-var daylist = ["Sunday","Monday","Tuesday","Wednesday ","Thursday","Friday","Saturday"];
-  var month = new Array(12);
+var daylist = ["Sunday","Monday","Tuesday","Wednesday ","Thursday","Friday","Saturday",];
+ var pWords = "" ;
+  if (daylist[day] = 0) {
+  	pWords = "Stay Energetic !";
+  }
+  else if (daylist[day] = 1) {
+  	pWords = "Cheer Up !";
+  }
+  else if (daylist[day] = 2) {
+  	pWords = "Stay Confident !";
+  }
+  else if (daylist[day] = 3) {
+  	pWords = "Remember to Smile !";
+  }
+  else if (daylist[day] = 4) {
+  	pWords = "Party Time !";
+  }
+  else if (daylist[day] = 5) {
+  	pWords = "Leisure Time !";
+  }
+  else if (daylist[day] = 6) {
+  	pWords = "Rest and Prepare !";
+  }
+var month = new Array(12);
 		month[0] = "January";
 		month[1] = "February";
 		month[2] = "March";
@@ -32,20 +68,17 @@ var daylist = ["Sunday","Monday","Tuesday","Wednesday ","Thursday","Friday","Sat
 		month[9] = "October";
 		month[10] = "November";
 		month[11] = "December";
-
 var today = new Date();
   var day = today.getDay();
-  var c = ("Today is " + daylist[day]);
   var dd = today.getDate();
   var mm = month[today.getMonth()];
 var yyyy = today.getFullYear();
-var b = (dd+'/'+mm+'/'+yyyy);
   var hour = today.getHours();
   var minute = today.getMinutes();
   var second = today.getSeconds();
   var tod = "";
   if (hour < 6) {
-  	tod = "Midgnight";
+  	tod = "Midnight";
   }
   else if (hour < 12) {
   	tod = "Morning";
@@ -56,7 +89,10 @@ var b = (dd+'/'+mm+'/'+yyyy);
   else if (hour < 24) {
   	tod = "Evening";
   }
+
   var a = (hour + " : " + minute + " : " + second);
+  var c = ("Today is " + daylist[day] + ", " + pWords);
+  var b = (dd+'/'+mm+'/'+yyyy);
 
  document.getElementById('a').innerHTML = a;
  document.getElementById('b').innerHTML = b;
@@ -65,7 +101,7 @@ var b = (dd+'/'+mm+'/'+yyyy);
 }
 </script>
 </head>
-<body onload="startTime()">
+<body onload="startTime(); animate_string('target') ">
 	<nav class="navbar is-transparent is-transparent">
     <div class="navbar-brand">
       <div class="navbar-item">
@@ -75,11 +111,11 @@ var b = (dd+'/'+mm+'/'+yyyy);
   	<div class="navbar-end">
   		<a class="navbar-item" href="wsappimg.jpg">TimeTable</a>
 	</nav>
-<div class="is-fullwidth is-dark" style="font-size: 50px; font-family: initial; text-align: center; font-style: bold;">I'm Deen</div>
+<div id="target" class="is-fullwidth is-dark" style="font-size: 50px; font-family: initial; text-align: center; font-style: bold;">Welcome !</div>
 <br>
 <div id = "a" class="is-fullwidth" style="font-size: 50px; font-family: 'Droid Sans', sans; text-align: center"></div>
 <div id = "c" class="is-fullwidth" style="font-size: 50px; font-family: 'Droid Sans', sans; text-align: center"></div> 
-<div id = "b" class="is-fullwidth" style="font-size: 20px; font-family: 'Droid Sans', sans; text-align: center"></div> 
+<div id = "b" class="is-fullwidth" style="font-size: 20px; font-family: 'Droid Sans', sans; text-align: center"></div>
 
 <div style="height:60px;"></div>
 <!-- Google Search -->

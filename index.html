@@ -3,37 +3,35 @@
 <head>
 	<title>Deen</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="override.css">
+	<link rel="stylesheet" type="text/css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.0/css/bulma.min.css">
   	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.42/css/uikit.min.css" />
-	<style type = "text/css">
+
+<style type = "text/css">
 		button {
 			height: 90px; 
      		font-size: 30px;
 			font-family: 'Josefin Sans', sans-serif; 
 		}
-		</style>
-		<script type="text/javascript">
-			function animate_string(id) 
-{
+</style>
+
+<script type="text/javascript">
+	function animate_string(id) {
     var element = document.getElementById(id);
     var textNode = element.childNodes[0]; 
     var text = textNode.data;
-
-setInterval(function () 
-{
- text = text[text.length - 1] + text.substring(0, text.length - 1);
-  textNode.data = text;
-}, 250);
+	setInterval(function ()
+	{text = text[text.length - 1] + text.substring(0, text.length - 1);textNode.data = text;}, 250);
 }
-		</script>
-		<script>
-function startTime() {
-var daylist = ["Sunday","Monday","Tuesday","Wednesday ","Thursday","Friday","Saturday",];
-var month = new Array(12);
+
+</script>
+
+<script>
+	var daylist = ["Sunday","Monday","Tuesday","Wednesday ","Thursday","Friday","Saturday",];
+	var month = new Array(12);
 		month[0] = "January";
 		month[1] = "February";
 		month[2] = "March";
@@ -46,19 +44,57 @@ var month = new Array(12);
 		month[9] = "October";
 		month[10] = "November";
 		month[11] = "December";
-var today = new Date();
+	var lastDay = function(y,m) {
+    return new Date(y, m +1, 0).getDate();
+}
+	function startTime() {
+  var today = new Date();
   var day = today.getDay();
-  var dd = today.getDate();
-  var mm = month[today.getMonth()];
-var yyyy = today.getFullYear();
+  var dd  = today.getDate();
+  var mm  = month[today.getMonth()];
+  var yyyy = today.getFullYear();
   var hour = today.getHours();
   var minute = today.getMinutes();
   var second = today.getSeconds();
   hour = checkTime(hour);
   minute = checkTime(minute);
   second = checkTime(second);
+  var trueYear = new Date(yyyy, 0, 0)//(Current Year, month, day)
+  var timeDiff = (today - trueYear);
+  var dayLength = 1000 * 60 * 60 * 24;
+  var pYear = Math.floor(timeDiff/dayLength);
+  var percentYear = pYear/366 * 100;
+  percentYear = percentYear.toFixed(2);
+  var monthMax = lastDay(yyyy,today.getMonth());
+  var monthPercent = dd/monthMax * 100;
+  monthPercent = monthPercent.toFixed(2);
+  var minPercent = minute/60 * 100;
+  var minFixed = minPercent.toFixed(2);
+  var dayPercent = (hour/24 * 100) + (minPercent/60);
+  dayPercent = dayPercent.toFixed(2);
+  var secPercent = second/60 * 100;
+  secPercent = secPercent.toFixed(2);
+  document.getElementById("progressMin").value = second;
+  document.getElementById('minPercent').innerHTML = secPercent+"%";
+  document.getElementById("progressHour").value = minute;
+  document.getElementById('hourPercent').innerHTML = minFixed+"%";
+  document.getElementById("progressDay").value = hour;
+  document.getElementById('dayPercent').innerHTML = dayPercent+"%";
+  document.getElementById("progressMonth").value = dd;
+  document.getElementById("progressMonth").max = monthMax;
+  document.getElementById('monthPercent').innerHTML = monthPercent+"%";
+  document.getElementById("progressYear").value = pYear;
+  document.getElementById('yearPercent').innerHTML = percentYear+"%";
+  var a = (hour + " : " + minute + " : " + second);
+  var c = ("Today is " + daylist[day] + ", " + pWords);
+  var b = (dd+'/'+mm+'/'+yyyy);
+  document.getElementById('a').innerHTML = a;
+  document.getElementById('b').innerHTML = b;
+  document.getElementById('c').innerHTML = c;
+  var t = setTimeout(startTime, 1000)
 
-  var pWords;
+
+var pWords;
   switch (day) {
   	case 0:
   		pWords = "Rest and Prepare !";
@@ -82,56 +118,86 @@ var yyyy = today.getFullYear();
   		pWords = "Leisure Time !";
   		break;
   }
-  var tod = "";
-  if (hour < 6) {
+var tod = "";
+	if (hour < 6) {
   	tod = "Midnight";
   }
-  else if (hour < 12) {
+  	else if (hour < 12) {
   	tod = "Morning";
   }
-  else if (hour < 18) {
+  	else if (hour < 18) {
   	tod = "Afternoon";
   }
-  else if (hour < 24) {
+  	else if (hour < 24) {
   	tod = "Evening";
   }
-  var a = (hour + " : " + minute + " : " + second);
-  var c = ("Today is " + daylist[day] + ", " + pWords);
-  var b = (dd+'/'+mm+'/'+yyyy);
- document.getElementById('a').innerHTML = a;
- document.getElementById('b').innerHTML = b;
- document.getElementById('c').innerHTML = c;
- var t = setTimeout(startTime, 1000)
-}
-function checkTime(i) {
+
+  }
+  function checkTime(i) {
     if (i < 10) {i = "0" + i};
     return i;
 }
 </script>
+
 </head>
+
 <body onload="startTime(); animate_string('target') ">
-	<nav class="navbar is-transparent is-transparent">
+
+<!-- Navbar -->
+
+<nav class="navbar is-transparent is-transparent">
     <div class="navbar-brand">
       <div class="navbar-item">
         <h1 class="title" style="font-family: 'Josefin Sans', sans-serif; height: 10px; ">WebDeen</h1>
       </div>
   	</div>
   	<div class="navbar-end">
+  		<!-- Navbar Dropdown -->
+		<div class="navbar-item has-dropdown is-hoverable is-right">
+  			<a class="navbar-link">
+  				Percentage
+  			</a>
+
+  			<div class="navbar-dropdown">
+  				Year :
+  				<div id="yearPercent"></div>
+  				<progress id="progressYear" max="366" value=""></progress>
+  				Month :
+  				<div id="monthPercent"></div>
+  				<progress id="progressMonth"></progress>
+  				Day :
+  				<div id="dayPercent"></div>
+  				<progress id="progressDay" max="24"></progress>
+  				Hour :
+  				<div id="hourPercent"></div>
+  				<progress id="progressHour" max="60"></progress>
+  				Minute :
+  				<div id="minPercent"></div>
+  				<progress id="progressMin" max="60"></progress>
+  		</div>
+
   		<a class="navbar-item" href="wsappimg.jpg">TimeTable</a>
-	</nav>
+</nav>
+
+<!-- Heading -->
 <div id="target" class="is-fullwidth is-dark" style="font-size: 50px; font-family: initial; text-align: center; font-style: bold;">Welcome !</div>
+
 <br>
+
+<!-- Date & Time -->
 <div id = "a" class="is-fullwidth" style="font-size: 50px; font-family: 'Droid Sans', sans; text-align: center"></div>
 <div id = "c" class="is-fullwidth" style="font-size: 50px; font-family: 'Droid Sans', sans; text-align: center"></div> 
 <div id = "b" class="is-fullwidth" style="font-size: 20px; font-family: 'Droid Sans', sans; text-align: center"></div>
 
 <div style="height:60px;"></div>
+
 <!-- Google Search -->
 <form class="is-fullwidth" method="get" action="http://www.google.com/search">
     <span uk-search-icon></span>
     <input autofocus class="uk-search-input" type="text" name = "q" placeholder="Google Search" style="text-align: center; font-size: 30px;">
 </form>
 
+<!-- Buttons -->
 <div style="height:0px;"></div>
 	<button onclick="window.location.href='http://elearn.sunway.edu.my/'" class="button is-dark is-fullwidth">E-learn</button>
     <button onclick="window.location.href='https://izone.sunway.edu.my/'" class="button is-dark is-fullwidth">iZone</button>
@@ -141,9 +207,11 @@ function checkTime(i) {
     <button onclick="window.location.href='http://youtube.com'" class="button is-dark is-fullwidth">YouTube</button>
     <button onclick="window.location.href='http://masterani.me'" class="button is-dark is-fullwidth">Masterani</button>
 
-    <footer style="text-align: center; background-color: rgb(59, 89, 152)">
+<!-- Footer -->
+<footer style="text-align: center; background-color: rgb(59, 89, 152)">
     <a href="https://www.facebook.com/ding.nickhong" class="fa fa-facebook" style="color:black"></a>
     <a href="https://www.instagram.com/dingnick/" class="fa fa-instagram" style="color: black"></a>
- 	</footer>
+</footer>
+
 </body>
 </html>

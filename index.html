@@ -9,6 +9,10 @@
   	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.42/css/uikit.min.css" />
+  	<link rel="stylesheet" href="https://cdn.rawgit.com/IonicaBizau/github-calendar/gh-pages/dist/github-calendar.css"/>
+  	<script
+  	src="https://cdn.rawgit.com/IonicaBizau/github-calendar/gh-pages/dist/github-calendar.min.js">
+  	</script>
 
 <style type = "text/css">
 		button {
@@ -74,27 +78,7 @@
   dayPercent = dayPercent.toFixed(2);
   var secPercent = second/60 * 100;
   secPercent = secPercent.toFixed(2);
-  document.getElementById("progressMin").value = second;
-  document.getElementById('minPercent').innerHTML = secPercent+"%";
-  document.getElementById("progressHour").value = minute;
-  document.getElementById('hourPercent').innerHTML = minFixed+"%";
-  document.getElementById("progressDay").value = hour;
-  document.getElementById('dayPercent').innerHTML = dayPercent+"%";
-  document.getElementById("progressMonth").value = dd;
-  document.getElementById("progressMonth").max = monthMax;
-  document.getElementById('monthPercent').innerHTML = monthPercent+"%";
-  document.getElementById("progressYear").value = pYear;
-  document.getElementById('yearPercent').innerHTML = percentYear+"%";
-  var a = (hour + " : " + minute + " : " + second);
-  var c = ("Today is " + daylist[day] + ", " + pWords);
-  var b = (dd+'/'+mm+'/'+yyyy);
-  document.getElementById('a').innerHTML = a;
-  document.getElementById('b').innerHTML = b;
-  document.getElementById('c').innerHTML = c;
-  var t = setTimeout(startTime, 1000)
-
-
-var pWords;
+  var pWords;
   switch (day) {
   	case 0:
   		pWords = "Rest and Prepare !";
@@ -118,6 +102,25 @@ var pWords;
   		pWords = "Leisure Time !";
   		break;
   }
+  document.getElementById("progressMin").value = second;
+  document.getElementById('minPercent').innerHTML = secPercent+"%";
+  document.getElementById("progressHour").value = minute;
+  document.getElementById('hourPercent').innerHTML = minFixed+"%";
+  document.getElementById("progressDay").value = hour;
+  document.getElementById('dayPercent').innerHTML = dayPercent+"%";
+  document.getElementById("progressMonth").value = dd;
+  document.getElementById("progressMonth").max = monthMax;
+  document.getElementById('monthPercent').innerHTML = monthPercent+"%";
+  document.getElementById("progressYear").value = pYear;
+  document.getElementById('yearPercent').innerHTML = percentYear+"%";
+  var a = (hour + " : " + minute + " : " + second);
+  var c = ("Today is " + daylist[day] + ", " + pWords);
+  var b = (dd+'/'+mm+'/'+yyyy);
+  document.getElementById('a').innerHTML = a;
+  document.getElementById('b').innerHTML = b;
+  document.getElementById('c').innerHTML = c;
+  var t = setTimeout(startTime, 1000)
+
 var tod = "";
 	if (hour < 6) {
   	tod = "Midnight";
@@ -174,7 +177,7 @@ var tod = "";
   				Minute :
   				<div id="minPercent"></div>
   				<progress id="progressMin" max="60"></progress>
-  		</div>
+  			</div>
 
   		<a class="navbar-item" href="wsappimg.jpg">TimeTable</a>
 </nav>
@@ -188,6 +191,13 @@ var tod = "";
 <div id = "a" class="is-fullwidth" style="font-size: 50px; font-family: 'Droid Sans', sans; text-align: center"></div>
 <div id = "c" class="is-fullwidth" style="font-size: 50px; font-family: 'Droid Sans', sans; text-align: center"></div> 
 <div id = "b" class="is-fullwidth" style="font-size: 20px; font-family: 'Droid Sans', sans; text-align: center"></div>
+<br>
+<div class="calendar">
+</div>
+
+<script>
+    GitHubCalendar(".calendar", "dingnh");
+</script>
 
 <div style="height:60px;"></div>
 

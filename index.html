@@ -4,7 +4,7 @@
 	<title>Deen</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=1000; user-scalable=0">
   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.0/css/bulma.min.css">
   	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -15,6 +15,15 @@
   	</script>
 
 <style type = "text/css">
+		.contrib-column {
+			display: none;
+		}
+		.contrib-footer {
+			display: none;
+		}
+		h2.f4.text-normal.mb-2 {
+			display: none;
+		}
 		a {
 			text-decoration: none !important;
 		}
@@ -159,30 +168,35 @@ var tod = "";
   	</div>
   	<div class="navbar-end">
   		<!-- Navbar Dropdown -->
-		<div class="navbar-item has-dropdown is-hoverable is-right">
-  			<a class="navbar-link">
-  				Percentage
-  			</a>
-
-  			<div class="navbar-dropdown">
-  				Year :
-  				<div id="yearPercent"></div>
-  				<progress id="progressYear" max="366" value=""></progress>
-  				<div>Month :</div>
-  				<div id="monthPercent"></div>
-  				<progress id="progressMonth"></progress>
-  				<div>Day :</div>
-  				<div id="dayPercent"></div>
-  				<progress id="progressDay" max="24"></progress>
-  				<div>Hour :</div>
-  				<div id="hourPercent"></div>
-  				<progress id="progressHour" max="60"></progress>
-  				<div>Minute :</div>
-  				<div id="minPercent"></div>
-  				<progress id="progressMin" max="60"></progress>
+		<div class="navbar-item has-dropdown is-hoverable">
+			<a class="navbar-link" style="text-align: center">
+				Percentage
+			</a>
+			<div class="navbar-dropdown" style="text-align: center">
+  				<div>Year :
+  				<strong id="yearPercent"></strong>
+  				<progress class="progress is-primary" id="progressYear" max="366" value=""></progress>
+  				</div>
+  				<div>Month :
+  				<strong id="monthPercent"></strong>
+  				<progress class="progress is-primary" id="progressMonth"></progress>
+  				</div>
+  				<div>Day :
+  				<strong id="dayPercent"></strong>
+  				<progress class="progress is-primary" id="progressDay" max="24"></progress>
+  				</div>
+  				<div>Hour :
+  				<strong id="hourPercent"></strong>
+  				<progress class="progress is-primary" id="progressHour" max="60"></progress>
+  				</div>
+  				<div>Minute :
+  				<strong id="minPercent"></strong>
+  				<progress class="progress is-primary" id="progressMin" max="60"></progress>
+  				</div>
   			</div>
+  		</div>
 
-  		<a class="navbar-item" href="wsappimg.jpg">TimeTable</a>
+  		<a class="navbar-item" href="wsappimg.jpg" style="text-align: center">TimeTable</a>
 </nav>
 
 <!-- Heading -->
@@ -195,7 +209,7 @@ var tod = "";
 <div id = "c" class="is-fullwidth" style="font-size: 50px; font-family: 'Droid Sans', sans; text-align: center"></div> 
 <div id = "b" class="is-fullwidth" style="font-size: 20px; font-family: 'Droid Sans', sans; text-align: center"></div>
 <br>
-<div class="calendar">
+<div class="calendar" style="border-style: none;">
 </div>
 
 <script>

@@ -3,23 +3,11 @@
 <head>
 	<title>DateCalculator</title>
 	<meta charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="override.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.0/css/bulma.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.42/css/uikit.min.css" />
   
-
-  	<script>
-  	var date = new Date(); 
-	var dateSet = new Date(date.getYear(), date.getMonth(), date.getDate());
-	var todayDate = new Date(dateSet);
-	function calButton() {
-		var cDate = document.getElementById("CurrentDate").value;
-		var dDate = document.getElementById("DueDate").value;
-//function of DD/MM/YYYY - DD/MM/YYY
-	}
-	</script>
 </head>
 <body>
 <nav class="navbar is-transparent is-transparent">
@@ -43,20 +31,32 @@
         <div class="field">
         <label class="label">Current Date</label>
         <div class="control">
-          <input type="date" class="input" placeholder="Current Date">
+          <input id="CurrentDate" type="text" class="input" placeholder="MM/DD/YYYY">
         </div>
       </div>
 
       <div class="field">
         <label class="label">Due Date</label>
         <div class="control">
-          <input type="date" class="input" placeholder="Due Date">
+          <input id="DueDate" type="text" class="input" placeholder="MM/DD/YYYY">
         </div>
       </div>
 
-          <button id="calButton" type="button" class="button is-primary is-centered is-fullwidth" onclick="calButton()">Calculate</button>
+          <button type="button" class="button is-primary is-centered is-fullwidth" onclick="doneButton()" >Calculate</button>
           <!-- Answer -->
-          
-  
+          <p id="showDaysLeft"></p>
+
+<script>
+function doneButton(){
+  var cDate = document.getElementById("CurrentDate").value;
+  var dDate = document.getElementById("DueDate").value;
+  var diff = Date.parse(dDate) - Date.parse(cDate);
+  var dayDiff = Math.floor(diff / 86400000);
+
+  document.getElementById("showDaysLeft").innerHTML = "Days Left : " + dayDiff;
+}
+//function of MM/DD/YYYY - MM/DD/YYYY
+  </script>
+
   </div>
 </html>

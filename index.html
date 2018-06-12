@@ -33,6 +33,21 @@
 			font-family: 'Josefin Sans', sans-serif; 
 		}
 </style>
+  <style>
+  body, html {
+    height: 100%;
+}
+
+.bg { 
+    background-image: url(http://blog.visme.co/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-03.jpg);
+
+    height: 100%; 
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+</style>
 
 <script type="text/javascript">
 	function animate_string(id) {
@@ -156,7 +171,7 @@ var tod = "";
 
 </head>
 
-<body onload="startTime(); animate_string('target')">
+<body class="bg" onload="startTime(); animate_string('target')">
 
 <!-- Navbar -->
 
@@ -218,8 +233,6 @@ var tod = "";
 <script>
     GitHubCalendar(".calendar", "dingnh");
 </script>
-
-<div style="height:60px;"></div>
 
 <!-- Google Search -->
 <form class="is-fullwidth" method="get" action="http://www.google.com/search">

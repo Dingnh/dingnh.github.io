@@ -7,6 +7,50 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.0/css/bulma.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.42/css/uikit.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.42/js/uikit.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.42/js/uikit-icons.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <script>
+  var lastDay = function(y,m) {
+    return new Date(y, m +1, 0).getDate();
+}
+    function startTime() {
+  var today = new Date();
+  var day = today.getDay();
+  var dd  = today.getDate();
+  var yyyy = today.getFullYear();
+  var hour = today.getHours();
+  var minute = today.getMinutes();
+  var second = today.getSeconds();
+  var trueYear = new Date(yyyy, 0, 0)//(Current Year, month, day)
+  var timeDiff = (today - trueYear);
+  var dayLength = 1000 * 60 * 60 * 24;
+  var pYear = Math.floor(timeDiff/dayLength);
+  var percentYear = pYear/366 * 100;
+  percentYear = percentYear.toFixed(2);
+  var monthMax = lastDay(yyyy,today.getMonth());
+  var monthPercent = dd/monthMax * 100;
+  monthPercent = monthPercent.toFixed(2);
+  var minPercent = minute/60 * 100;
+  var minFixed = minPercent.toFixed(2);
+  var dayPercent = (hour/24 * 100) + (minPercent/60);
+  dayPercent = dayPercent.toFixed(2);
+  var secPercent = second/60 * 100;
+  secPercent = secPercent.toFixed(2);
+  document.getElementById("progressMin").value = second;
+  document.getElementById('minPercent').innerHTML = secPercent+"%";
+  document.getElementById("progressHour").value = minute;
+  document.getElementById('hourPercent').innerHTML = minFixed+"%";
+  document.getElementById("progressDay").value = hour;
+  document.getElementById('dayPercent').innerHTML = dayPercent+"%";
+  document.getElementById("progressMonth").value = dd;
+  document.getElementById("progressMonth").max = monthMax;
+  document.getElementById('monthPercent').innerHTML = monthPercent+"%";
+  document.getElementById("progressYear").value = pYear;
+  document.getElementById('yearPercent').innerHTML = percentYear+"%";
+  var t = setTimeout(startTime, 1000)
+}
+  </script>
   
   <style>
   body, html {
@@ -27,16 +71,34 @@
 }
 </style>
 </head>
-<body class="bg">
-<nav class="navbar is-transparent is-transparent">
-    <div class="navbar-brand">
-      <div class="navbar-item">
-        <h1 class="title" style="font-family: 'Josefin Sans', sans-serif; height: 10px; ">WebDeen</h1>
-      </div>
-  	</div>
-  	<div class="navbar-end">
-  		<a class="navbar-item" href="wsappimg.jpg">TimeTable</a>
-	</nav>
+<body class="bg" onload="startTime();">
+<div class="uk-offcanvas-content">
+
+    <button class="uk-button uk-button-default" style="right:0;position:fixed;box-shadow:none;border:0px;" type="button" uk-toggle="target: #offcanvas-nav-primary" uk-icon="icon: menu"></button>
+
+    <div id="offcanvas-nav-primary" uk-offcanvas="flip: true ;overlay: false">
+        <div class="uk-offcanvas-bar uk-flex uk-flex-column">
+            <button class="uk-offcanvas-close" type="button" uk-close></button>
+            <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical">
+                <li class="uk-active"><a href="dingnh.github.io">Home</a></li>
+                <li><a href="dingnh.github.io/dateCalculator"><span class="uk-margin-small-right" uk-icon="icon: calendar"></span> DateCalculator</a></li>
+                <li><a href="wsappimg.jpg"><span class="uk-margin-small-right" uk-icon="icon: link"></span> Timetable</a></li>
+                <br>
+                <li class="uk-nav-divider"></li>
+                <li>Year :<div id="yearPercent"></div>
+                <progress class="progress is-primary" id="progressYear" max="366" value=""></progress></li>
+                <li>Months :<div id="monthPercent"></div>
+                <progress class="progress is-primary" id="progressMonth"></progress></li>
+                <li>Days :<div id="dayPercent"></div>
+                <progress class="progress is-primary" id="progressDay" max="24"></progress></li>
+                <li>Hours :<div id="hourPercent"></div>
+                <progress class="progress is-primary" id="progressHour" max="60"></progress></li>
+                <li>Minutes :<div id="minPercent"></div>
+                <progress class="progress is-primary" id="progressMin" max="60"></progress></li>
+            </ul>
+        </div>
+    </div>
+</div>
 	<div class="section">
 
     <div class="container">

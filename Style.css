@@ -1,38 +1,173 @@
+@import url('https://fonts.googleapis.com/css?family=Major+Mono+Display');
+@import url('https://fonts.googleapis.com/css?family=Jura');
 
-.contrib-column {
+@media (max-width: 1500px){
+			#rectangle {
+				display: none;
+			}
+		}
 
-display: none;
-}
-.contrib-footer {
-
-display: none;
-}
-h2.f4.text-normal.mb-2 {
-
-display: none;
-}
-a {
-
-text-decoration: none !important;
-}
-button {
-
-height: 90px; 
-    
-
-font-size: 30px;
-
-font-family: 'Josefin Sans', sans-serif; 
+* {
+	margin: 0;
+	padding: 0;
+	font-family: Jura;
 }
 
-  body, html {
-    height: 100%;
+header {
+	background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(bg-img.jpg);
+	text-shadow: 0 0 20px rgba(200, 140, 230, 1),  0 0 20px rgba(155, 100, 50, 1);
+	background-size: cover;
+	background-position: center;
+	height: 100vh;
 }
 
-.bg { 
-    background-image: url(http://blog.visme.co/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-03.jpg);
-    height: 100%;
-    background-position: center;
-    background-size: auto;
+nav a {
+	float: right;
+	margin-top: 14px;
+	margin-right: 20px;
+	text-decoration: none;
+	color: #dfe6e9;
+	font-size: 25px;
+	padding: 5px 20px;
+	border-radius: 10px;
+	cursor: pointer;
+}
 
+ul {
+	position: absolute;
+	right: 0%;
+	list-style-type: none;
+	padding: 20px 80px;
+}
+
+ul li {
+	display: inline-block;
+}
+
+ul li a {
+	text-decoration: none;
+	color: #dfe6e9;
+	font-size: 25px;
+	padding: 5px 20px;
+	border-bottom: 1px solid #fff;
+	border-radius: 10px; 
+	margin-right: 10px; 
+	transition: 0.6s;
+	cursor: pointer;
+}
+
+ul li a:hover {
+	background-color: #ffddcc;
+	color: #2d3436;
+	border-bottom: 1px solid #000;
+}
+
+ul li.active a {
+	background-color: #ffd0bb;
+	color: #2d3436;
+	border-bottom: 1px solid #000;
+}
+
+.time {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: #dfe6e9;
+	letter-spacing: 0.2em;
+    font-size: 70px;
+    font-family: Major Mono Display
+}
+
+.date {
+	position: absolute;
+	top: 56%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: #dfe6e9;
+	letter-spacing: 0.2em;
+	font-size: 20px;
+	font-family: Major Mono Display
+}
+
+.click {
+	position: absolute;
+	top: 45%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: #dfe6e9;
+	letter-spacing: 0.2em;
+	transition: 1s;
+}
+
+.clicked {
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 15px 10px;
+	border-bottom: 1px solid #2d3436;
+	color: #dfe6e9;
+	letter-spacing: 0.2em;
+	transition: 1s;
+}
+
+.click:hover {
+	color: #2d3436;
+	cursor: pointer;
+}
+
+.clicked:hover {
+	color: #2d3436;
+	cursor: pointer;
+}
+
+.links {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: #dfe6e9;
+	letter-spacing: 0.2em;
+    font-size: 70px;
+}
+
+.links a {
+	text-decoration: none;
+	display: inline-flex;
+	width: 220px;
+	color: #dfe6e9;
+	font-size: 20px;
+	padding: 10px 20px;
+	border-radius: 20px;
+	transition: 0.6s;
+	margin: 0px 0px 0px 40px;
+	opacity: 0.9;
+	border: 1px solid transparent;
+}
+
+.links a:hover {
+	color: #2d3436;
+	border: 1px solid #000;
+	cursor: pointer;
+	opacity: 1;
+}
+
+#rectangle {
+    width: 200px;
+    height: 5px;
+  	background: #dfe6e9;
+  	position: absolute;
+  	top: 50%;
+	left: 25%;
+	border-radius: 100%;
+	transform: translate(-50%, -50%);
+}
+
+.fade-enter-active, .fade-leave-active {
+  	transition: opacity .5s ease-out;
+}
+
+.fade-enter, .fade-leave-to {
+  	opacity: 0;
 }

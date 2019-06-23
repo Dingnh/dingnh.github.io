@@ -1,111 +1,57 @@
 <!DOCTYPE html>
-<html lang = "en">
+<html>
 <head>
-	<title>Deen</title>
-	<meta charset="utf-8">
+	<title>Home</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.0/css/bulma.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.42/css/uikit.min.css" />
-  <link rel="stylesheet" href="https://cdn.rawgit.com/IonicaBizau/github-calendar/gh-pages/dist/github-calendar.css"/>
-  <link rel="stylesheet" type="text/css" href="Style.css">
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.42/js/uikit.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.42/js/uikit-icons.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
-<script
-src="https://cdn.rawgit.com/IonicaBizau/github-calendar/gh-pages/dist/github-calendar.min.js">
-</script>
-<style>
-.calendar{
-  display: block;
-}
-@media (max-width: 600px){
-  .calendar{
-    display: none;
-  }
-}
-
-</style>
-<!-- Date & Time -->
-<script src="function.js"></script>
-
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+<body>
+	<header>
+		<div id="app-navbar">
+			<nav>
+				<transition name="fade">
+					<a v-on:click="showNavbar"><<</a>
+				</transition>
+			</nav>
+			<transition name="fade">
+				<div v-show="active">
+					<ul @mouseleave="showNavbar">
+						<nav-links
+							v-for="link in links"
+							v-bind:key="link.id"
+							v-bind:title="link.title"
+							v-bind:class="{ active: link.isActive }"
+							v-bind:hrefsrc='link.href'
+						></nav-links>
+					</ul>
+				</div>
+			</transition>
+		</div>
+	</header>
 
-<body class="bg" onload="startTime(); animate_string('target')">
+	<div id="app-clock">
+		<a :class="[active ? 'clicked' : 'click']" v-on:click="showLinks" style="font-size: 30px;">{{ clicker }}</a>
+		<transition name="fade">
+			<div v-show="!active">
+				<p id="rectangle"></p>
+				<p class="time">{{ time }}</p>
+				<p class="date">{{ date }}</p>
+				<p id="rectangle" style="left: 75%"></p>
+			</div>
+		</transition>
+	</div>
 
-<div class="uk-offcanvas-content">
+	<div id="app-shortcut">
+		<transition name="fade">
+			<div v-show="active" class="links" style="width: 1240px;">
+				<a v-for="(icon, index) in icons" :style="{ 'background-color': '#' + bgcolor[index].backgrd }" 
+				:href="hrefs[index].link" target="_blank"><i :class="icon.icon" aria-hidden="true"></i>{{ shortcuts[index].name }}</a>
+			</div>
+		</transition>
+	</div>
 
-    <button class="uk-button uk-button-default" style="right:0;position:fixed;box-shadow:none;border:0px;" type="button" uk-toggle="target: #offcanvas-nav-primary" uk-icon="icon: menu"></button>
-
-    <div id="offcanvas-nav-primary" uk-offcanvas="flip: true ;overlay: false">
-        <div class="uk-offcanvas-bar uk-flex uk-flex-column">
-            <button class="uk-offcanvas-close" type="button" uk-close></button>
-            <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical">
-                <li class="uk-active">
-                  <a onclick="window.location='https://dingnh.github.io/'">Home</a>
-                </li>
-                <li><a onclick="window.location='https://dingnh.github.io/dateCalculator/'">
-                  <span class="uk-margin-small-right" uk-icon="icon: calendar">
-                  </span> DateCalculator</a></li>
-                <li><a onclick="window.location='https://dingnh.github.io/DY1S1_Timetable.PNG'">
-                  <span class="uk-margin-small-right" uk-icon="icon: link">
-                  </span> Timetable</a></li>
-                <br>
-                <li class="uk-nav-divider"></li>
-                <li>Year :<div id="yearPercent"></div>
-                <progress class="progress is-primary" id="progressYear" max="366" value=""></progress></li>
-                <li>Months :<div id="monthPercent"></div>
-                <progress class="progress is-primary" id="progressMonth"></progress></li>
-                <li>Days :<div id="dayPercent"></div>
-                <progress class="progress is-primary" id="progressDay" max="24"></progress></li>
-                <li>Hours :<div id="hourPercent"></div>
-                <progress class="progress is-primary" id="progressHour" max="60"></progress></li>
-                <li>Minutes :<div id="minPercent"></div>
-                <progress class="progress is-primary" id="progressMin" max="60"></progress></li>
-            </ul>
-        </div>
-    </div>
-</div>
-<!-- Heading -->
-<div id="target" class="is-fullwidth is-dark" style="font-size: 50px; font-family: initial; text-align: center; font-style: bold;">Welcome !</div>
-
-<br>
-
-<!-- Date & Time -->
-<div id = "a" class="is-fullwidth" style="font-size: 50px; font-family: 'Droid Sans', sans; text-align: center"></div>
-<div id = "c" class="is-fullwidth" style="font-size: 50px; font-family: 'Droid Sans', sans; text-align: center"></div> 
-<div id = "b" class="is-fullwidth" style="font-size: 20px; font-family: 'Droid Sans', sans; text-align: center"></div>
-<br>
-<div class="calendar" style="border-style: none;">
-</div>
-
-<script>
-    GitHubCalendar(".calendar", "dingnh");
-</script>
-
-<!-- Google Search -->
-<form class="is-fullwidth"  method="get" action="http://www.google.com/search">
-    <span uk-search-icon></span>
-    <input autofocus class="uk-search-input" type="text" name = "q" placeholder="Google Search" style="text-align: center; font-size: 30px;">
-</form>
-
-<!-- Buttons -->
-<div style="height:0px;"></div>
-	<button onclick="window.location.href='http://elearn.sunway.edu.my/'" class="button is-dark is-fullwidth">E-learn</button>
-    <button onclick="window.location.href='https://izone.sunway.edu.my/'" class="button is-dark is-fullwidth">iZone</button>
-    <button onclick="window.location.href='https://GitHub.com/'" class="button is-dark is-fullwidth">GitHub</button>
-    <button onclick="window.location.href='https://outlook.office.com/owa/?realm=imail.sunway.edu.my&vd=www'" class="button is-dark is-fullwidth">iMail</button>
-    <button onclick="window.location.href='https://sunwaytechclub.slack.com'" class="button is-dark is-fullwidth">Slack</button>
-    <button onclick="window.location.href='http://youtube.com'" class="button is-dark is-fullwidth">YouTube</button>
-    <button onclick="window.location.href='http://masterani.me'" class="button is-dark is-fullwidth">Masterani</button>
-
-<!-- Footer -->
-<footer style="text-align: center; background-color: rgb(59, 89, 152)">
-    <a href="https://www.facebook.com/ding.nickhong" class="fa fa-facebook" style="color:black"></a>
-    <a href="https://www.instagram.com/dingnick/" class="fa fa-instagram" style="color: black"></a>
-</footer>
-
+	<script src="function.js"></script>
 </body>
 </html>

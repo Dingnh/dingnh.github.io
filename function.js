@@ -86,7 +86,7 @@ var showNav = new Vue({
 		links: [
 			{ isActive: true, title: 'Home', href: 'https://dingnh.github.io' },
 			{ isActive: false, title: 'DateCalculator', href: 'https://dingnh.github.io/dateCalculator/' },
-			{ isActive: false, title: 'TimeTable', href: 'https://dingnh.github.io/DY1S1_Timetable.PNG' },
+			{ isActive: false, title: 'TimeTable', href: 'https://dingnh.github.io/DY1S2_Timetable.PNG' },
 		],
 	},
 	methods: {

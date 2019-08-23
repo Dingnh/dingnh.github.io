@@ -13,6 +13,8 @@
 	font-family: Jura;
 }
 
+body { margin: 0; padding: 0; overflow: hidden; }
+
 header {
 	background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(bg-img.jpg);
 	text-shadow: 0 0 20px rgba(200, 140, 230, 1),  0 0 20px rgba(155, 100, 50, 1);

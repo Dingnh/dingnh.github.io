@@ -1,57 +1,75 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Home</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-<body>
-	<header>
-		<div id="app-navbar">
-			<nav>
-				<transition name="fade">
-					<a v-on:click="showNavbar"><<</a>
-				</transition>
-			</nav>
-			<transition name="fade">
-				<div v-show="active">
-					<ul @mouseleave="showNavbar">
-						<nav-links
-							v-for="link in links"
-							v-bind:key="link.id"
-							v-bind:title="link.title"
-							v-bind:class="{ active: link.isActive }"
-							v-bind:hrefsrc='link.href'
-						></nav-links>
-					</ul>
-				</div>
-			</transition>
-		</div>
-	</header>
+  <head>
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div id="app-navbar">
+        <nav>
+          <transition name="fade">
+            <a v-on:click="showNavbar"><<</a>
+          </transition>
+        </nav>
+        <transition name="fade">
+          <div v-show="active">
+            <ul @mouseleave="showNavbar">
+              <nav-links
+                v-for="link in links"
+                v-bind:key="link.id"
+                v-bind:title="link.title"
+                v-bind:class="{ active: link.isActive }"
+                v-bind:hrefsrc="link.href"
+              ></nav-links>
+            </ul>
+          </div>
+        </transition>
+      </div>
+    </header>
 
-	<div id="app-clock">
-		<a :class="[active ? 'clicked' : 'click']" v-on:click="showLinks" style="font-size: 30px;">{{ clicker }}</a>
-		<transition name="fade">
-			<div v-show="!active">
-				<p id="rectangle"></p>
-				<p class="time">{{ time }}</p>
-				<p class="date">{{ date }}</p>
-				<p id="rectangle" style="left: 75%"></p>
-			</div>
-		</transition>
-	</div>
+    <div id="app-clock">
+      <a
+        :class="[active ? 'clicked' : 'click']"
+        v-on:click="showLinks"
+        style="font-size: 30px;"
+        >{{ clicker }}</a
+      >
+      <transition name="fade">
+        <div v-show="!active">
+          <p id="rectangle"></p>
+          <p class="time">{{ time }}</p>
+          <p class="date">{{ date }}</p>
+          <p id="rectangle" style="left: 75%"></p>
+        </div>
+      </transition>
+    </div>
 
-	<div id="app-shortcut">
-		<transition name="fade">
-			<div v-show="active" class="links" style="width: 1240px;">
-				<a v-for="(icon, index) in icons" :style="{ 'background-color': '#' + bgcolor[index].backgrd }" 
-				:href="hrefs[index].link" target="_blank"><i :class="icon.icon" aria-hidden="true"></i>{{ shortcuts[index].name }}</a>
-			</div>
-		</transition>
-	</div>
+    <div id="app-shortcut">
+      <transition name="fade">
+        <div v-show="active" class="links" style="width: 1240px;">
+          <a
+            v-for="(icon, index) in icons"
+            :style="{ 'background-color': '#' + bgcolor[index].backgrd }"
+            :href="hrefs[index].link"
+            target="_blank"
+            ><i :class="icon.icon" aria-hidden="true"></i>{{
+            shortcuts[index].name }}</a
+          >
+        </div>
+      </transition>
+    </div>
 
-	<script src="function.js"></script>
-</body>
+    <div>
+      <img src="{imgSrc}" />
+    </div>
+
+    <script src="function.js"></script>
+  </body>
 </html>

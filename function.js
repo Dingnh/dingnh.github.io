@@ -5,22 +5,22 @@ var clock = new Vue({
     date: "",
     clicker: "{ { Click Me } }",
     active: false,
-    display: true
+    display: true,
   },
   methods: {
-    showLinks: function() {
+    showLinks: function () {
       this.active = !this.active;
       if (this.active === false) {
         this.clicker = "{ { Click Me } }";
         shortcutLinks.active = !shortcutLinks.active;
       } else {
         this.clicker = "{ { Shortcuts } }";
-        setTimeout(function() {
+        setTimeout(function () {
           shortcutLinks.active = !shortcutLinks.active;
         }, 500);
       }
-    }
-  }
+    },
+  },
 });
 
 var shortcutLinks = new Vue({
@@ -34,7 +34,7 @@ var shortcutLinks = new Vue({
       { name: "GITHUB" },
       { name: "SLACK" },
       { name: "iMAIL" },
-      { name: "iZONE" }
+      { name: "iZONE" },
     ],
     icons: [
       { icon: "fa fa-youtube-play" },
@@ -44,7 +44,7 @@ var shortcutLinks = new Vue({
       { icon: "fa fa-github" },
       { icon: "fa fa-slack" },
       { icon: "fa fa-envelope" },
-      { icon: "fa fa-user" }
+      { icon: "fa fa-user" },
     ],
     bgcolor: [
       { backgrd: "EE5555" },
@@ -54,7 +54,7 @@ var shortcutLinks = new Vue({
       { backgrd: "ad5c51" },
       { backgrd: "3AAE84" },
       { backgrd: "6EC4CB" },
-      { backgrd: "CC2E5B" }
+      { backgrd: "CC2E5B" },
     ],
     hrefs: [
       { link: "https://www.youtube.com/" },
@@ -64,13 +64,14 @@ var shortcutLinks = new Vue({
       { link: "https://github.com/" },
       { link: "https://slack.com/intl/en-my/" },
       {
-        link: "https://outlook.office.com/owa/?realm=imail.sunway.edu.my&vd=www"
+        link:
+          "https://outlook.office.com/owa/?realm=imail.sunway.edu.my&vd=www",
       },
-      { link: "https://izone.sunway.edu.my/login" }
+      { link: "https://izone.sunway.edu.my/login" },
     ],
     active: false,
-    display: true
-  }
+    display: true,
+  },
 });
 
 Vue.component("nav-links", {
@@ -79,7 +80,7 @@ Vue.component("nav-links", {
 		<li>
 			<a :href='hrefsrc'>{{ title }}</a>
 		</li>
-		`
+		`,
 });
 
 var showNav = new Vue({
@@ -91,20 +92,20 @@ var showNav = new Vue({
       {
         isActive: false,
         title: "DateCalculator",
-        href: "https://dingnh.github.io/dateCalculator/"
+        href: "https://dingnh.github.io/dateCalculator/",
       },
       {
         isActive: false,
         title: "TimeTable",
-        href: "https://dingnh.github.io/DY1S3_Timetable.PNG"
-      }
-    ]
+        href: "https://dingnh.github.io/D21S1_Timetable.PNG",
+      },
+    ],
   },
   methods: {
-    showNavbar: function() {
+    showNavbar: function () {
       this.active = !this.active;
-    }
-  }
+    },
+  },
 });
 
 var week = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];

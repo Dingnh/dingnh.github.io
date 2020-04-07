@@ -97,7 +97,7 @@ var showNav = new Vue({
       {
         isActive: false,
         title: "TimeTable",
-        href: "https://dingnh.github.io/D21S1_Timetable.PNG",
+        href: "https://dingnh.github.io/DY2S1_Timetable.PNG",
       },
     ],
   },
